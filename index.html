@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indomie: Simfoni Strategi Pemasaran</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0D1B2A; /* Biru Malam Pekat */
+            color: #E0E0E0; /* Putih Gading */
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+       .font-serif-display {
+            font-family: 'Playfair Display', serif;
+        }
+       .hero-bg {
+            background: linear-gradient(rgba(13, 27, 42, 0.85), rgba(13, 27, 42, 1)), 
+                        url('https://placehold.co/1920x1080/0A0A0A/121212?text=Jejak+Strategi'); /* Placeholder lebih tematik */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efek parallax sederhana */
+        }
+       .accent-gold {
+            color: #B0A171; /* Emas Pucat Matte */
+        }
+       .border-accent-gold {
+            border-color: #B0A171;
+        }
+       .bg-charcoal {
+            background-color: #1E1E1E; /* Abu-abu Arang */
+        }
+       .bg-deep-black {
+            background-color: #121212; /* Hitam Pekat */
+        }
+       .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+       .nav-link:hover {
+            color: #B0A171;
+            transform: translateY(-2px);
+        }
+       .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            background-color: #B0A171;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+       .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+       .content-card {
+            background-color: rgba(30, 30, 30, 0.5); /* Semi-transparan agar menyatu */
+            border: 1px solid rgba(176, 161, 113, 0.2); /* Border emas subtil */
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            backdrop-filter: blur(3px); /* Efek blur untuk kedalaman */
+        }
+       .content-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px rgba(176, 161, 113, 0.3);
+        }
+       .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+       .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+       .hamburger div {
+            width: 28px; /* Sedikit lebih besar */
+            height: 2.5px; /* Sedikit lebih tebal */
+            background-color: #E0E0E0;
+            margin: 6px 0; /* Spasi lebih */
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transisi lebih 'bouncy' */
+        }
+       .hamburger.open.line1 {
+            transform: rotate(-45deg) translate(-7px, 7px);
+        }
+       .hamburger.open.line2 {
+            opacity: 0;
+            transform: scale(0);
+        }
+       .hamburger.open.line3 {
+            transform: rotate(45deg) translate(-7px, -7px);
+        }
+       .mobile-nav {
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease;
+            opacity:0;
+        }
+       .mobile-nav.open {
+            transform: translateX(0);
+            opacity: 1;
+        }
+       .icon-placeholder { /* Untuk visualisasi poin tanpa gambar berat */
+            width: 40px;
+            height: 40px;
+            border: 1px solid #B0A171;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            color: #B0A171;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 p-6 transition-all duration-300 ease-in-out" id="navbar">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#hero" class="text-3xl font-serif-display accent-gold">Indomie</a>
+            <nav class="hidden md:flex space-x-10">
+                <a href="#pendahuluan" class="nav-link text-sm uppercase tracking-wider pb-1">Pendahuluan</a>
+                <a href="#periklanan" class="nav-link text-sm uppercase tracking-wider pb-1">Periklanan</a>
+                <a href="#modifikasi-perilaku" class="nav-link text-sm uppercase tracking-wider pb-1">Modifikasi Perilaku</a>
+                <a href="#distribusi" class="nav-link text-sm uppercase tracking-wider pb-1">Distribusi</a>
+                <a href="#kesimpulan" class="nav-link text-sm uppercase tracking-wider pb-1">Kesimpulan</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="hamburger-button" class="hamburger focus:outline-none">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-charcoal/95 backdrop-blur-lg transform -translate-x-full z-40 pt-24 mobile-nav md:hidden">
+        <nav class="flex flex-col items-center space-y-10">
+            <a href="#pendahuluan" class="nav-link text-2xl uppercase tracking-wider pb-1 mobile-nav-link">Pendahuluan</a>
+            <a href="#periklanan" class="nav-link text-2xl uppercase tracking-wider pb-1 mobile-nav-link">Periklanan</a>
+            <a href="#modifikasi-perilaku" class="nav-link text-2xl uppercase tracking-wider pb-1 mobile-nav-link">Modifikasi Perilaku</a>
+            <a href="#distribusi" class="nav-link text-2xl uppercase tracking-wider pb-1 mobile-nav-link">Distribusi</a>
+            <a href="#kesimpulan" class="nav-link text-2xl uppercase tracking-wider pb-1 mobile-nav-link">Kesimpulan</a>
+        </nav>
+    </div>
+
+    <section id="hero" class="min-h-screen flex items-center justify-center hero-bg text-center p-6 relative">
+        <div class="absolute inset-0 bg-black/30"></div> <div class="max-w-4xl z-10">
+            <h1 class="text-4xl md:text-6xl font-serif-display mb-4 leading-tight text-white shadow-xl">Analisis Komprehensif Strategi Pemasaran Indomie</h1>
+            <p class="text-md md:text-lg mb-8 font-light leading-relaxed text-gray-300">Membangun Dominasi Pasar Melalui Periklanan Inovatif, Modifikasi Perilaku Konsumen, dan Distribusi Intensif.</p>
+            <a href="#pendahuluan" class="inline-block bg-accent-gold text-deep-black font-semibold py-3 px-10 rounded-sm hover:bg-transparent hover:text-accent-gold border-2 border-accent-gold transition duration-300 uppercase tracking-wider text-sm shadow-lg hover:shadow-accent-gold/30">Jelajahi Analisis</a>
+        </div>
+    </section>
+
+    <section id="pendahuluan" class="py-20 md:py-32 bg-deep-black scroll-reveal">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-serif-display mb-8 accent-gold">I. Mengurai Benang Merah Kesuksesan</h2>
+            <p class="text-lg font-light mb-6 leading-relaxed text-gray-300">
+                Indomie, produk mi instan dari PT Indofood Sukses Makmur Tbk, telah mengukuhkan posisinya sebagai pemimpin pasar yang tak tergoyahkan di Indonesia dan bahkan meraih popularitas signifikan di kancah global. Fenomena ini bukanlah kebetulan, melainkan hasil dari implementasi strategi pemasaran yang terencana, terukur, dan adaptif selama beberapa dekade. 
+            </p>
+            <p class="text-lg font-light leading-relaxed text-gray-300">
+                Keberhasilan Indomie dalam merajai pasar produk mi instan tidak hanya terletak pada <strong class="font-medium text-gray-200">kualitas produknya</strong>, tetapi juga pada kemampuannya dalam membangun <strong class="font-medium text-gray-200">citra merek yang kuat</strong>, <strong class="font-medium text-gray-200">menjangkau konsumen secara luas</strong>, dan bahkan <strong class="font-medium text-gray-200">memodifikasi kebiasaan serta preferensi masyarakat</strong>.
+            </p>
+        </div>
+    </section>
+
+    <section id="periklanan" class="py-20 md:py-32 bg-charcoal scroll-reveal">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-serif-display mb-16 text-center accent-gold">II. Gema Iklan: Simfoni Multi-Saluran</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                <div class="content-card p-6 rounded-lg">
+                    <div class="icon-placeholder">📺</div>
+                    <h3 class="text-xl font-semibold mb-3 accent-gold">Bauran Media Luas</h3>
+                    <p class="font-light text-sm leading-relaxed text-gray-400">Dari TVC ikonik hingga kampanye digital, Indomie merajut jaring komunikasi yang menjangkau setiap segmen, memastikan pesan "Indomie Seleraku" bergema kuat.</p>
+                </div>
+                <div class="content-card p-6 rounded-lg">
+                    <div class="icon-placeholder">🗣️</div>
+                    <h3 class="text-xl font-semibold mb-3 accent-gold">Slogan Abadi</h3>
+                    <p class="font-light text-sm leading-relaxed text-gray-400">"Indomie Seleraku" bukan sekadar kata, melainkan mantra budaya yang menanamkan Indomie sebagai pilihan personal dan sumber kenyamanan.</p>
+                </div>
+                <div class="content-card p-6 rounded-lg">
+                     <div class="icon-placeholder">🌟</div>
+                    <h3 class="text-xl font-semibold mb-3 accent-gold">Figur & Influencer</h3>
+                    <p class="font-light text-sm leading-relaxed text-gray-400">Pemanfaatan figur publik dan *influencer* secara strategis membangun kredibilitas dan relevansi, khususnya di kalangan audiens muda dan digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="modifikasi-perilaku" class="py-20 md:py-32 bg-deep-black scroll-reveal">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-serif-display mb-16 text-center accent-gold">III. Alkimia Selera: Transformasi Perilaku</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="content-card p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4 accent-gold">Evolusi Pola Makan</h3>
+                    <p class="font-light leading-relaxed text-gray-300 mb-4">Indomie mempopulerkan mi instan sebagai solusi praktis dan terjangkau, mengubahnya dari produk ceruk menjadi pilihan makanan sehari-hari bagi banyak orang.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm">
+                        <li>Praktis & cepat saji untuk gaya hidup modern.</li>
+                        <li>Harga terjangkau, aksesibel bagi semua kalangan.</li>
+                        <li>Fleksibel dikonsumsi kapan saja, di mana saja.</li>
+                    </ul>
+                </div>
+                <div class="content-card p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-4 accent-gold">Inovasi Rasa Berkelanjutan</h3>
+                    <p class="font-light leading-relaxed text-gray-300 mb-4">Pengenalan varian rasa baru yang selaras dengan selera lokal (seperti Rendang, Soto, Ayam Bawang) dan tren global (Salted Egg) secara aktif membentuk preferensi konsumen.</p>
+                     <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm">
+                        <li>Adaptasi rasa nusantara yang otentik.</li>
+                        <li>Respons cepat terhadap tren kuliner kekinian.</li>
+                        <li>Mencegah kejenuhan & mendorong eksplorasi produk.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="distribusi" class="py-20 md:py-32 bg-charcoal scroll-reveal">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif-display mb-16 accent-gold">IV. Jejak di Mana Saja: Arsitektur Distribusi</h2>
+            <p class="text-lg font-light mb-12 leading-relaxed max-w-3xl mx-auto text-gray-300">Ketersediaan adalah kunci. Strategi distribusi intensif Indomie memastikan produk ini hadir di setiap sudut pasar, dari warung tradisional hingga platform *e-commerce* global.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="icon-placeholder">🏪</div>
+                    <p class="text-sm text-gray-400">Warung</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-placeholder">🛒</div>
+                    <p class="text-sm text-gray-400">Minimarket</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-placeholder">🛍️</div>
+                    <p class="text-sm text-gray-400">Supermarket</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-placeholder">📦</div>
+                    <p class="text-sm text-gray-400">Grosir</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-placeholder">🌐</div>
+                    <p class="text-sm text-gray-400">E-commerce</p>
+                </div>
+            </div>
+            <p class="mt-10 text-md font-light text-gray-400">Keunggulan: Penetrasi pasar maksimal, kenyamanan konsumen, visibilitas merek tinggi.</p>
+        </div>
+    </section>
+
+    <section id="kesimpulan" class="py-20 md:py-32 bg-deep-black scroll-reveal">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-serif-display mb-8 accent-gold">V. Harmoni Strategis: Kunci Sukses Abadi</h2>
+            <p class="text-lg font-light mb-6 leading-relaxed text-gray-300">
+                Dominasi Indomie bukanlah kebetulan, melainkan simfoni dari strategi pemasaran yang terintegrasi. Periklanan yang menggema, kemampuan memodifikasi perilaku dan selera, serta distribusi yang merata, semuanya dijalin dengan kerangka 3A: <strong class="font-medium text-gray-200">Acceptability</strong> (Penerimaan Rasa), <strong class="font-medium text-gray-200">Availability</strong> (Ketersediaan Luas), dan <strong class="font-medium text-gray-200">Affordability</strong> (Keterjangkauan Harga).
+            </p>
+            <p class="text-lg font-light leading-relaxed text-gray-300">
+                Konsistensi, adaptasi, dan pemahaman mendalam terhadap konsumen Indonesia adalah melodi abadi dalam kisah sukses Indomie.
+            </p>
+        </div>
+    </section>
+
+    <footer class="py-10 bg-charcoal text-center border-t border-gray-700">
+        <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> Analisis Strategi Indomie. Dirangkai dalam Simfoni Digital.</p>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const navbar = document.getElementById('navbar');
+        const initialNavbarClasses = navbar.className; 
+        window.onscroll = function() {
+            if (window.pageYOffset > 80) { // Increased offset
+                navbar.classList.add("bg-charcoal/90", "shadow-2xl", "backdrop-blur-md", "py-4");
+                navbar.classList.remove("py-6");
+            } else {
+                navbar.className = initialNavbarClasses; // Reset to initial classes
+                navbar.classList.add("py-6"); 
+                navbar.classList.remove("py-4", "bg-charcoal/90", "shadow-2xl", "backdrop-blur-md");
+            }
+        };
+
+        const scrollElements = document.querySelectorAll('.scroll-reveal');
+        const elementInView = (el, percentageScroll = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= 
+                ((window.innerHeight |
+| document.documentElement.clientHeight) * (percentageScroll/100))
+            );
+        };
+        const displayScrollElement = (element) => {
+            element.classList.add('visible');
+        };
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 85)) { // Adjusted percentage
+                    displayScrollElement(el);
+                }
+            })
+        }
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+        });
+        handleScrollAnimation(); // Initial check
+
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        hamburgerButton.addEventListener('click', () => {
+            hamburgerButton.classList.toggle('open');
+            mobileMenu.classList.toggle('-translate-x-full');
+            mobileMenu.classList.toggle('translate-x-0');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerButton.classList.remove('open');
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start' 
+                    });
+                }
+                if (mobileMenu.classList.contains('open')) {
+                    hamburgerButton.click(); // Simulate click to close
+                }
+            });
+        });
+    </script>
+</body>
+</html>
